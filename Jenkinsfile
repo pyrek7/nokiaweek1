@@ -12,9 +12,18 @@ pipeline {
                 echo 'Testing..'
             }
         }
-        stage('Deploy') {
+        stage('Scripting') {
             steps {
-                echo 'Deploying....'
+                parallel(
+                    "TaskOne":{
+                        echo 'task one job1'
+                        echo 'task one job2'
+                    },
+                    "TaskTwo":{
+                        echo 'task two job1'
+                        echo 'task two job2'
+                    }
+                )
             }
         }
     }
